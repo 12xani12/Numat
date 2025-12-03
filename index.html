@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Numat Group Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="brand">
+      <div class="brand-logo">N</div>
+      <div>
+        <span class="brand-title">Numat Group Dashboard</span>
+        <span class="brand-subtitle">Opportunities &amp; Sales Performance</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <button id="tab-dashboard" class="nav-btn active">Dashboard</button>
+      <button id="tab-data" class="nav-btn">Data Entry</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- DASHBOARD VIEW -->
+    <section id="view-dashboard" class="view active">
+      <section class="controls">
+        <div class="control-group">
+          <label for="year-filter">Year</label>
+          <select id="year-filter"></select>
+        </div>
+      </section>
+
+      <section class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Total Sales (YTD)</div>
+          <div class="kpi-value" id="kpi-sales-ytd">$0</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Total Opportunities Won (YTD)</div>
+          <div class="kpi-value" id="kpi-opp-won-ytd">0</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">% to Sales Goal (YTD)</div>
+          <div class="kpi-value" id="kpi-sales-goal-ytd">0%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">% to Opp Goal (YTD)</div>
+          <div class="kpi-value" id="kpi-opp-goal-ytd">0%</div>
+        </div>
+      </section>
+
+      <section class="charts-grid charts-grid-3">
+        <div class="chart-card">
+          <h2>Opportunities Won vs Goal (by Month)</h2>
+          <div class="chart-wrapper">
+            <canvas id="opportunitiesChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h2>Sales by Division (by Month)</h2>
+          <div class="chart-wrapper">
+            <canvas id="salesByDivisionChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h2>YTD Sales by Division</h2>
+          <div class="chart-wrapper">
+            <canvas id="salesByDivisionYtdChart"></canvas>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- DATA ENTRY VIEW -->
+    <section id="view-data" class="view">
+      <h1>Data Entry</h1>
+      <p class="hint">
+        Edit the tables below, then click <strong>Save Data</strong>. Your changes are stored in this browser (local only).
+      </p>
+
+      <div class="data-section">
+        <h2>Opportunities</h2>
+        <button class="small-btn" id="add-opportunity-row">Add Row</button>
+        <div class="table-wrapper">
+          <table id="table-opportunities">
+            <thead>
+              <tr>
+                <th>Date (YYYY-MM-DD)</th>
+                <th>Salesperson</th>
+                <th>Division</th>
+                <th>Customer / Project</th>
+                <th>Estimated Value</th>
+                <th>Stage</th>
+                <th>Outcome</th>
+                <th>Close Date (YYYY-MM-DD)</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="data-section">
+        <h2>Sales</h2>
+        <button class="small-btn" id="add-sales-row">Add Row</button>
+        <div class="table-wrapper">
+          <table id="table-sales">
+            <thead>
+              <tr>
+                <th>Invoice Date (YYYY-MM-DD)</th>
+                <th>Division</th>
+                <th>Customer</th>
+                <th>Region</th>
+                <th>Amount</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="data-section">
+        <h2>Targets</h2>
+        <button class="small-btn" id="add-target-row">Add Row</button>
+        <div class="table-wrapper">
+          <table id="table-targets">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Month (1-12)</th>
+                <th>Division</th>
+                <th>Opportunities Goal</th>
+                <th>Sales Goal</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="save-data" class="primary-btn">Save Data</button>
+        <button id="reset-data" class="danger-btn">Reset to Sample Data</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Numat Group dashboard demo – static web app. Host it with GitHub Pages.</span>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
